@@ -10,22 +10,29 @@ import java.sql.SQLException;
 public class FreelancerController {
 
     public static void createFreelancer(Connection con) throws SQLException {
-        String input = Utils.readString();
+        System.out.println("=== Creating a new freelancer ===");
 
-        System.out.println("xxxxx:");
+        System.out.print("Enter the freelancer’s name: ");
+        String freelancerName = Utils.readString();
 
-        System.out.println("Name: ");
-        String freelancerName = input;
+        System.out.print("Enter the freelancer’s phone number: ");
+        String freelancerPhone = Utils.readString();
 
-        System.out.println("Phone: ");
-        String freelancerPhone = input;
-
-        System.out.println("E-mail: ");
-        String freelancerMail = input;
+        System.out.print("Enter the freelancer’s email: ");
+        String freelancerMail = Utils.readString();
 
         FreelancerBean freelancer = new FreelancerBean(freelancerName, freelancerPhone, freelancerMail);
-        FreelancerModel.create(freelancer, con);
 
-        System.out.println("Success!");
+        try {
+            FreelancerModel.create(freelancer, con);
+            System.out.println("\nNew account created successfully!\n");
+        } catch (SQLException e) {
+            if (e.getSQLState().equals("23505")) {
+                System.out.println("\nThe email provided is already in use. Try another one.\n");
+            } else {
+                System.out.println("\nError: " + e.getMessage() + "\n");
+                throw e;
+            }
+        }
     }
 }

@@ -7,15 +7,19 @@ public class Utils {
 
     public static int readInt() {
         int input = 0;
+        boolean validInput = false;
 
-        try {
-            input = scanner.nextInt();
-        } catch (Exception e) {
-            System.out.println("Error:" + e);
-        } finally {
-            clearBuffer();
+        while (!validInput) {
+            try {
+                input = scanner.nextInt();
+                validInput = true;
+            } catch (Exception e) {
+                System.out.println("Error: please, inform a valid value.");
+                scanner.nextLine();
+            }
         }
 
+        clearBuffer();
         return input;
     }
 

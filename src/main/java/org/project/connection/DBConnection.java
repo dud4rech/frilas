@@ -3,11 +3,14 @@ package org.project.connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DBConnection {
     private Connection con;
+    private String loggedUserEmail;
+    private static final Scanner scanner = new Scanner(System.in);
 
     public DBConnection() {
         String driver = "org.postgresql.Driver";
