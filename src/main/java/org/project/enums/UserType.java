@@ -1,12 +1,12 @@
 package org.project.enums;
 
-public enum UserEnum {
+public enum UserType {
     FREELANCER(1),
     HIRER(2);
 
     private final int value;
 
-    UserEnum(int value) {
+    UserType(int value) {
         this.value = value;
     }
 

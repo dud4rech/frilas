@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class ActionLineInterface {
 
     public static void execute(Connection con) throws SQLException {
-        System.out.println("Welcome!");
+        System.out.println("\nWelcome!");
 
         int command;
 

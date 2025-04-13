@@ -4,23 +4,22 @@ public class PaymentBean {
     private int paymentId;
     private int paymentValue;
     private String paymentDate;
-    private int paymentStatus;
+    private int projectId;
     private int freelancerId;
     private int hirerid;
 
-    public PaymentBean(int paymentValue, String paymentDate, int paymentStatus, int freelancerId, int hirerid) {
+    public PaymentBean(int paymentValue, String paymentDate, int projectId, int freelancerId, int hirerid) {
         this.paymentValue = paymentValue;
         this.paymentDate = paymentDate;
-        this.paymentStatus = paymentStatus;
+        this.projectId = projectId;
         this.freelancerId = freelancerId;
         this.hirerid = hirerid;
     }
 
-    public PaymentBean(int paymentId, int paymentValue, String paymentDate, int paymentStatus, int freelancerId, int hirerid) {
+    public PaymentBean(int paymentId, int paymentValue, String paymentDate, int freelancerId, int hirerid) {
         this.paymentId = paymentId;
         this.paymentValue = paymentValue;
         this.paymentDate = paymentDate;
-        this.paymentStatus = paymentStatus;
         this.freelancerId = freelancerId;
         this.hirerid = hirerid;
     }
@@ -53,14 +52,6 @@ public class PaymentBean {
         this.paymentDate = paymentDate;
     }
 
-    public int getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(int paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
     public int getFreelancerId() {
         return freelancerId;
     }
@@ -75,5 +66,13 @@ public class PaymentBean {
 
     public void setHirerid(int hirerid) {
         this.hirerid = hirerid;
+    }
+
+    public int getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 }

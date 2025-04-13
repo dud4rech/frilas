@@ -3,21 +3,21 @@ package org.project.bean;
 public class ProposalBean {
     private int proposalId;
     private int proposalValue;
-    private String proposalMessage;
+    private String proposalDescription;
     private int freelancerId;
     private int projectId;
 
-    public ProposalBean(int proposalValue, String proposalMessage, int freelancerId, int projectId) {
+    public ProposalBean(int proposalValue, String proposalDescription, int freelancerId, int projectId) {
         this.proposalValue = proposalValue;
-        this.proposalMessage = proposalMessage;
+        this.proposalDescription = proposalDescription;
         this.freelancerId = freelancerId;
         this.projectId = projectId;
     }
 
-    public ProposalBean(int proposalId, int proposalValue, String proposalMessage) {
+    public ProposalBean(int proposalId, int proposalValue, String proposalDescription) {
         this.proposalId = proposalId;
         this.proposalValue = proposalValue;
-        this.proposalMessage = proposalMessage;
+        this.proposalDescription = proposalDescription;
     }
 
     public ProposalBean(int proposalId) {
@@ -40,12 +40,12 @@ public class ProposalBean {
         this.proposalValue = proposalValue;
     }
 
-    public String getProposalMessage() {
-        return proposalMessage;
+    public String getproposalDescription() {
+        return proposalDescription;
     }
 
-    public void setProposalMessage(String proposalMessage) {
-        this.proposalMessage = proposalMessage;
+    public void setproposalDescription(String proposalDescription) {
+        this.proposalDescription = proposalDescription;
     }
 
     public int getFreelancerId() {

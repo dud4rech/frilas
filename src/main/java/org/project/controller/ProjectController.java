@@ -30,7 +30,7 @@ public class ProjectController {
         ProjectBean project = new ProjectBean(projectName, projectDescription, projectDeadline, projectBudget, hirerId);
         ProjectModel.create(project, con);
 
-        System.out.println("\nProject created successfully!\n");
+        System.out.println("\nProject created successfully!");
     }
 
     public static void updateProject(Connection con) throws SQLException {
@@ -52,9 +52,13 @@ public class ProjectController {
         int projectBudget = Utils.readInt();
 
         ProjectBean project = new ProjectBean(projectId, projectName, projectDescription, projectDeadline, projectBudget);
-        ProjectModel.update(project, con);
+        int projectUpdated = ProjectModel.update(project, con);
 
-        System.out.println("\nProject edited successfully!\n");
+        if (projectUpdated == 0) {
+            System.out.println("\nProject not edited or it doesn't exist.");
+        } else {
+            System.out.println("\nProject edited successfully!");
+        }
     }
 
     public static void deleteProject(Connection con) throws SQLException {
@@ -64,8 +68,12 @@ public class ProjectController {
         int projectId = Utils.readInt();
 
         ProjectBean project = new ProjectBean(projectId);
-        ProjectModel.delete(project, con);
+        int projectDeleted = ProjectModel.delete(project, con);
 
-        System.out.println("\nProject deleted successfully!\n");
+        if (projectDeleted == 0) {
+            System.out.println("\nProject not deleted or it doesn't exist.");
+        } else {
+            System.out.println("\nProject deleted successfully!");
+        }
     }
 }

@@ -19,12 +19,12 @@ public class LoginAction {
 
         if (command == 1) {
             if (authenticateFreelancer(email, con)) {
-                System.out.println("*** Login was successful! ***\n");
+                System.out.println("Login was successful!");
                 FreelancerAction.execute(con);
             }
         } else if (command == 2) {
             if (authenticateHirer(email, con)) {
-                System.out.println("*** Login was successful! ***");
+                System.out.println("Login was successful!");
                 HirerAction.execute(con);
             }
         }

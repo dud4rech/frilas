@@ -3,19 +3,21 @@ package org.project.bean;
 public class RatingBean {
     private int ratingId;
     private int ratingValue;
-    private String ratingMessage;
+    private String ratingDescription;
     private int freelancerId;
+    private int hirerId;
 
-    public RatingBean(int ratingValue, String ratingMessage, int freelancerId) {
+    public RatingBean(int ratingValue, String ratingDescription, int freelancerId, int hirerId) {
         this.ratingValue = ratingValue;
-        this.ratingMessage = ratingMessage;
+        this.ratingDescription = ratingDescription;
         this.freelancerId = freelancerId;
+        this.hirerId = hirerId;
     }
 
-    public RatingBean(int ratingId, int ratingValue, String ratingMessage) {
+    public RatingBean(int ratingId, int ratingValue, String ratingDescription) {
         this.ratingId = ratingId;
         this.ratingValue = ratingValue;
-        this.ratingMessage = ratingMessage;
+        this.ratingDescription = ratingDescription;
     }
 
     public RatingBean(int ratingId) {
@@ -38,12 +40,12 @@ public class RatingBean {
         this.ratingValue = ratingValue;
     }
 
-    public String getRatingMessage() {
-        return ratingMessage;
+    public String getRatingDescription() {
+        return ratingDescription;
     }
 
-    public void setRatingMessage(String ratingMessage) {
-        this.ratingMessage = ratingMessage;
+    public void setRatingDescription(String ratingDescription) {
+        this.ratingDescription = ratingDescription;
     }
 
     public int getFreelancerId() {
@@ -52,5 +54,13 @@ public class RatingBean {
 
     public void setFreelancerId(int freelancerId) {
         this.freelancerId = freelancerId;
+    }
+
+    public int getHirerId() {
+        return hirerId;
+    }
+
+    public void setHirerId(int hirerId) {
+        this.hirerId = hirerId;
     }
 }
