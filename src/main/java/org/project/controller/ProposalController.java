@@ -86,7 +86,7 @@ public class ProposalController {
         if (proposalAccepted > -1) {
             ProjectModel.updateStatus(projectId, con);
 
-            Map<String, Object> details = ProposalModel.findProjectAQndProposalDetails(proposal.getProposalId(), con);
+            Map<String, Object> details = ProposalModel.findProjectAndProposalDetails(proposal.getProposalId(), con);
             PaymentController.createPayment(
                     (int) details.get("freelancerid"),
                     (int) details.get("proposalvalue"),

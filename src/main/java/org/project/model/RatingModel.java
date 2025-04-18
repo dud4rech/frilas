@@ -120,8 +120,10 @@ public class RatingModel {
                     + "INNER JOIN project pr ON pr.projectid = pl.projectid "
                     + "LEFT JOIN rating rt ON rt.freelancerid = fr.freelancerid AND rt.hirerid = pr.hirerid "
                     + "WHERE pr.hirerid = ? "
-                    + "AND rt.ratingid IS NULL");
+                    + "AND rt.ratingid IS NULL "
+                    + "AND pr.projectstatus <> ?");
             ps.setInt(1, LoginAction.getLoggedUser());
+            ps.setInt(2, ProjectStatus.START.getValue());
             rs = ps.executeQuery();
 
             while (rs.next()) {

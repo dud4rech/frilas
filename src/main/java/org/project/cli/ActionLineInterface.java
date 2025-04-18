@@ -30,9 +30,9 @@ public class ActionLineInterface {
                 case 2:
                     RegisterAction.execute(con);
                     break;
-                case 3:
+                case 0:
                     System.out.println("Bye bye...");
-                    return;
+                    break;
                 default:
                     System.out.println("Invalid option");
                     break;

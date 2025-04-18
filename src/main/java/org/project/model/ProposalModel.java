@@ -74,7 +74,7 @@ public class ProposalModel {
         }
     }
 
-    public static Map<String, Object> findProjectAQndProposalDetails(int proposalId, Connection con) throws SQLException {
+    public static Map<String, Object> findProjectAndProposalDetails(int proposalId, Connection con) throws SQLException {
         String sql = "SELECT freelancerid, proposalvalue, projectdeadline, projectid FROM proposal pl " +
                 "INNER JOIN project pt ON pt.projectid = pl.projectid " +
                 "WHERE proposalid = ?";
@@ -138,13 +138,16 @@ public class ProposalModel {
     public static boolean listAllNotAccepted(Connection con) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
+        int freelancerId = LoginAction.getLoggedUser();
 
         boolean hasProposals = false;
         try {
             ps = con.prepareStatement("SELECT * FROM proposal " +
                     "WHERE proposalstatus != ? " +
+                    "AND freelancerid = ? " +
                     "ORDER BY proposalid");
             ps.setInt(1, ProposalStatus.ACCEPTED.getValue());
+            ps.setInt(2, freelancerId);
             rs = ps.executeQuery();
 
             while (rs.next()) {

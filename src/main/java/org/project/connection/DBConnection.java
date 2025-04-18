@@ -9,8 +9,6 @@ import java.util.logging.Logger;
 
 public class DBConnection {
     private Connection con;
-    private String loggedUserEmail;
-    private static final Scanner scanner = new Scanner(System.in);
 
     public DBConnection() {
         String driver = "org.postgresql.Driver";
