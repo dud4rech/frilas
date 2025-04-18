@@ -57,7 +57,7 @@ public class HirerAction {
                     }
                     break;
                 case 5:
-                    hasPayments = PaymentModel.listAllByUser(con);
+                    hasPayments = PaymentModel.listAllPendingPaymentByUser(con);
                     if (hasPayments) PaymentController.makePayment(con);
                     break;
                 case 6:

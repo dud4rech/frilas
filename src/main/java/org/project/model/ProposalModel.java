@@ -75,7 +75,7 @@ public class ProposalModel {
     }
 
     public static Map<String, Object> findProjectAndProposalDetails(int proposalId, Connection con) throws SQLException {
-        String sql = "SELECT freelancerid, proposalvalue, projectdeadline, projectid FROM proposal pl " +
+        String sql = "SELECT pl.freelancerid, pl.proposalvalue, pt.projectdeadline, pt.projectid FROM proposal pl " +
                 "INNER JOIN project pt ON pt.projectid = pl.projectid " +
                 "WHERE proposalid = ?";
 

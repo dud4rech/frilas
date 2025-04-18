@@ -38,27 +38,41 @@ public class PaymentModel {
         }
     }
 
-    public static void listAllPendingPaymentByUser(Connection con) throws SQLException {
+    public static boolean listAllPendingPaymentByUser(Connection con) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
         int hirerId = LoginAction.getLoggedUser();
 
         try {
-            ps = con.prepareStatement("SELECT * FROM payment WHERE hirerid = ? AND paymentstatus = ? ORDER BY paymentid");
+            boolean hasPayments = false;
+
+            ps = con.prepareStatement("SELECT * FROM payment " +
+                    "WHERE hirerid = ? " +
+                    "AND paymentstatus = ? " +
+                    "ORDER BY paymentid");
             ps.setInt(1, hirerId);
             ps.setInt(2, PaymentStatus.PENDING.getValue());
             rs = ps.executeQuery();
 
             while (rs.next()) {
+                hasPayments = true;
                 int paymentId = rs.getInt("paymentid");
                 String paymentName = rs.getString("paymentvalue");
                 String paymentMessage = rs.getString("paymentdate");
+                int paymentStatus = rs.getInt("paymentstatus");
+
+                String statusDescription = PaymentStatus.fromValue(paymentStatus).getDescription();
 
                 System.out.println("Payment ID: " + paymentId);
                 System.out.println("Value: " + paymentName);
                 System.out.println("Date: " + paymentMessage);
+                System.out.println("Status: " + statusDescription);
                 System.out.println("------------------------");
             }
+            if (!hasPayments) {
+                System.out.println("\nThere are no payments created.");
+            }
+            return hasPayments;
         } catch (SQLException e) {
             System.err.println("Error: " + e.getMessage());
             throw e;
@@ -74,7 +88,9 @@ public class PaymentModel {
         int hirerId = LoginAction.getLoggedUser();
 
         try {
-            ps = con.prepareStatement("SELECT * FROM payment WHERE hirerid = ? ORDER BY paymentid");
+            ps = con.prepareStatement("SELECT * FROM payment " +
+                    "WHERE hirerid = ? " +
+                    "ORDER BY paymentid");
             ps.setInt(1, hirerId);
             rs = ps.executeQuery();
 
